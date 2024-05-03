@@ -1,5 +1,29 @@
 # Assessment
 
+This is a public repository intended to assess a person's development ability.
+Requirements:
+* a working knowledge of Laravel
+* docker desktop installed
+* two hours of focused time
+* a timer
+
+Please only spend two hours working on the assessment, and see how
+far you get.
+If you spend more than two hours, we won't be able to make a fair assessment
+of your skills.
+You should start the timer once the docker containers have successfully started, e.g. you see this in your terminal:
+
+```
+➜  assessment git:(main) ✗ sail up -d
+[+] Running 6/6
+ ✔ Container assessment-selenium-1      Started                                                  
+ ✔ Container assessment-meilisearch-1   Started
+ ✔ Container assessment-redis-1         Started                                                  
+ ✔ Container assessment-mailpit-1       Started                                                  
+ ✔ Container assessment-mysql-1         Started                                                  
+ ✔ Container assessment-laravel.test-1  Started                                                 
+```
+
 ## Git Setup
 
 Please do not fork the repository. You will need to create a copy of the repository in your own
@@ -34,7 +58,7 @@ Run the following commands if setting up for the first time:
 
 ## Tasks
 
-Complete the following tasks. Allow for two hours.
+Complete the following tasks:
 
 * create a table called `products`, with fields including `name` and `code`
 * seed the table with arbitrary product records

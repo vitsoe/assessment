@@ -2,7 +2,7 @@
 
 This is a public repository intended to assess a person's development ability.
 Requirements:
-* a working knowledge of Laravel
+* a working knowledge of PHP & Laravel
 * docker desktop installed
 * two hours of focused time
 * a timer
@@ -36,6 +36,8 @@ Github account. To achieve this, do the following:
 * Move the `.git` folder into the local Vitsoe assessment project folder
 * `git status` will now show a number of new files, copied from the Vitsoe assessment project
 * Add, commit, and push these files to your own repository
+* Create a branch which will contain your changes
+* Once you have spent two hours working on the assessment, push your changes to the branch, and then create a pull request
 * Give read access to your new repository to the following Github accounts:
   * `swoodvitsoe`
   * `tcrawford-vitsoe`
@@ -67,3 +69,5 @@ Complete the following tasks:
 
 If you have time:
 * add throttling to the API with configuration stored in `config/`
+
+After you have 

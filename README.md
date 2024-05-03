@@ -40,3 +40,6 @@ Complete the following tasks. Allow for two hours.
 * seed the table with arbitrary product records
 * create an API endpoint to return a list of `products` ordered by `code`, in JSON format
 * add the ability to filter products based on `name` and/or `code`, using the `q` parameter
+
+If you have time:
+* add throttling to the API with configuration stored in `config/`

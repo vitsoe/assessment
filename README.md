@@ -69,5 +69,3 @@ Complete the following tasks:
 
 If you have time:
 * add throttling to the API with configuration stored in `config/`
-
-After you have 

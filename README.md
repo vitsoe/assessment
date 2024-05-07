@@ -69,3 +69,4 @@ Complete the following tasks:
 
 If you have time:
 * add throttling to the API with configuration stored in `config/`
+* add pagination to the API results

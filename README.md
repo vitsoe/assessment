@@ -38,6 +38,7 @@ Github account. To achieve this, do the following:
 * Add, commit, and push these files to your own repository
 * Create a branch which will contain your changes
 * Once you have spent two hours working on the assessment, push your changes to the branch, and then create a pull request
+* Please add any notes or comments to your pull request - a pull request is import, as it makes reviewing your code changes far easier
 * Give read access to your new repository to the following Github accounts:
   * `swoodvitsoe`
   * `tcrawford-vitsoe`
@@ -60,13 +61,15 @@ Run the following commands if setting up for the first time:
 
 ## Tasks
 
-Complete the following tasks:
+Assume no authentication is required.
+Complete the following tasks, while considering security and flexibility:
 
-* create a table called `products`, with fields including `name` and `code`
+* create a table called `products`, with fields including `name`, `code`, `internal_notes`
 * seed the table with arbitrary product records
 * create an API endpoint to return a list of `products` ordered by `code`, in JSON format
 * add the ability to filter products based on `name` and/or `code`, using the `q` parameter
 
 If you have time:
+
 * add throttling to the API with configuration stored in `config/`
 * add pagination to the API results

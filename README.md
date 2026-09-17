@@ -18,7 +18,7 @@ You should start the timer once the docker containers have successfully started,
 [+] up 7/7
  ✔ Network assessment_sail            Created   0.0s
  ✔ Container assessment-redis-1       Started   0.3s
- ✔ Container assessment-mysql-1       Started   0.3s
+ ✔ Container assessment-mariadb-1     Started   0.3s
  ✔ Container assessment-selenium-1    Started   0.2s
  ✔ Container assessment-mailpit-1     Started   0.2s
  ✔ Container assessment-meilisearch-1 Started   0.3s

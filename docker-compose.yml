@@ -1,11 +1,12 @@
 services:
-    laravel.test:
+    assessment:
+        image: sail-8.4/app
+        container_name: assessment
         build:
-            context: ./vendor/laravel/sail/runtimes/8.3
+            context: ./vendor/laravel/sail/runtimes/8.4
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -44,11 +45,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
+            test: 'mysqladmin ping -p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
     redis:
@@ -60,10 +57,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - redis-cli
-                - ping
+            test: 'redis-cli ping'
             retries: 3
             timeout: 5s
     meilisearch:
@@ -77,12 +71,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - wget
-                - '--no-verbose'
-                - '--spider'
-                - 'http://localhost:7700/health'
+            test: 'wget --no-verbose --spider http://localhost:7700/health'
             retries: 3
             timeout: 5s
     mailpit:

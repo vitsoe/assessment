@@ -7,10 +7,8 @@ Requirements:
 * four hours of focused time
 * a timer
 
-Please only spend four hours working on the assessment and see how
-far you get.
-If you spend more than four hours, we won't be able to make a fair assessment
-of your skills.
+Please spend four to eight hours working on the assessment, depending on your available time, and see how
+far you get. Please inform us how much time you spend on the assessment, so we can judge your work fairly.
 You should start the timer once the docker containers have successfully started, e.g. you see this in your terminal:
 
 ```

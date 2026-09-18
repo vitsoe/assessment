@@ -1,11 +1,12 @@
 services:
-    laravel.test:
+    assessment:
+        image: sail-8.4/app
+        container_name: assessment
         build:
-            context: ./vendor/laravel/sail/runtimes/8.3
+            context: ./vendor/laravel/sail/runtimes/8.4
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -22,33 +23,30 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
+            - mariadb
             - redis
             - meilisearch
             - mailpit
             - selenium
-    mysql:
-        image: 'mysql/mysql-server:8.0'
+    mariadb:
+        container_name: mariadb
+        image: 'mariadb:lts'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MARIADB_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+            MARIADB_ROOT_HOST: '%'
+            MARIADB_DATABASE: '${DB_DATABASE}'
+            MARIADB_USER: '${DB_USERNAME}'
+            MARIADB_PASSWORD: '${DB_PASSWORD}'
+            MARIADB_ALLOW_EMPTY_PASSWORD: 1
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+            - 'sail-mariadb:/var/lib/mariadb'
+            - './vendor/laravel/sail/database/mariadb/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
+            test: 'mariadb-admin ping -p${DB_ROOT_PASSWORD}'
             retries: 3
             timeout: 5s
     redis:
@@ -60,10 +58,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - redis-cli
-                - ping
+            test: 'redis-cli ping'
             retries: 3
             timeout: 5s
     meilisearch:
@@ -77,12 +72,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - wget
-                - '--no-verbose'
-                - '--spider'
-                - 'http://localhost:7700/health'
+            test: 'wget --no-verbose --spider http://localhost:7700/health'
             retries: 3
             timeout: 5s
     mailpit:
@@ -104,7 +94,7 @@ networks:
     sail:
         driver: bridge
 volumes:
-    sail-mysql:
+    sail-mariadb:
         driver: local
     sail-redis:
         driver: local
